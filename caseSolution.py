@@ -7,8 +7,14 @@ Date: 18.11.2023
 
 import json
 
-def OrganizedBooking():
+def strToTime(class_data):
+    tid = []
+    for i in class_data:
+        time = i['zonedStartTime']['dateTime']
+        tid.append(time[-9:-4])
+    return tid
 
+def OrganizedBooking():
 
     with open('response.json', 'r') as f:                     
         data = json.loads(f.read())
@@ -24,6 +30,7 @@ def OrganizedBooking():
         instructor = element['instructor']
         clubName = element['clubName']
         name = element['name']
+        zonedStartTime = strToTime(class_data)[i]
 
 #Bookinginfo
         capacity = str(element['bookingInfo']['capacity'])
@@ -44,6 +51,7 @@ def OrganizedBooking():
         print(f'Class: {name}\n'
               f'Instructor: {instructor}\n'
               f'Id: {id}\n'
+              f'Start time: {zonedStartTime}\n'
               f'Duration: {durationInMinutes}\n'
               f'Club: {clubName}\n\n'
               f'Booking Information:\n'
