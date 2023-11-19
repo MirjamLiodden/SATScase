@@ -22,6 +22,11 @@ def OrganizedBooking():
 
     class_data = data['results']
 
+    participationId = input('Please write your participation Id: ')
+    print(f'\nWelcome {participationId}\n'
+          f'Here is all GX classes for the evening:\n'
+          f'-----------------------------------------------\n')
+
     for i, element in enumerate(class_data):
 
 #Class information
@@ -63,15 +68,15 @@ def OrganizedBooking():
         print(f'Booking state: {bookingState.rjust(32)}')
         if waitingListPosition != '--' and waitingListPosition != '0':
             print(f'Waiting list position: {waitingListPosition.rjust(23)}')
-        print(f'\n------------------------------------------------\n')
+        print(f'\n-----------------------------------------------\n')
 
 #Independent member information 
     followingBookingCount = element['followingBookingCount']
     followingBookings = element['followingBookings']
     
-    print(f'Member booking information:\n'
+    print(f'\033[1;37mMember booking information for {participationId}:\033[0m\n'
         f'FollowingBookingCount: {followingBookingCount}\n'
-        f'FollowingBookings: {followingBookings}')
+        f'FollowingBookings: {followingBookings}\n\n')
 
 if __name__ == '__main__':
     OrganizedBooking()
