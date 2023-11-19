@@ -26,7 +26,7 @@ def OrganizedBooking():
 
 #Class information
         id = element['id']
-        durationInMinutes = element['durationInMinutes']
+        durationInMinutes = str(element['durationInMinutes'])
         instructor = element['instructor']
         clubName = element['clubName']
         name = element['name']
@@ -48,21 +48,21 @@ def OrganizedBooking():
         else:
             waitingListPosition = '--'
 
-        print(f'Class: {name}\n'
-              f'Instructor: {instructor}\n'
-              f'Id: {id}\n'
-              f'Start time: {zonedStartTime}\n'
-              f'Duration: {durationInMinutes}\n'
-              f'Club: {clubName}\n\n'
-              f'Booking Information:\n'
-              f'Booked: {bookedCount}/{capacity}')
+        print(f'\033[1;97;40mClass: {name.rjust(40)}\033[0m\n'
+              f'Instructor: {instructor.rjust(35)}\n'
+              f'Id: {id.rjust(43)}\n'
+              f'Start time: {zonedStartTime.rjust(35)}\n'
+              f'Duration: {durationInMinutes.rjust(37)}\n'
+              f'Club: {clubName.rjust(41)}\n\n'
+              f'\033[1;37mBooking Information:\033[0m\n'
+              f'Booked: {bookedCount.rjust(36)}/{capacity}')
         if waitingList != '--':
-            print(f'Waiting list: {waitingList}')
+            print(f'Waiting list: {waitingList.rjust(33)}')
         if 'participationProbability' in element:
-            print(f'Participation Probability: {element['participationProbability']}')
-        print(f'Booking state: {bookingState}')
+            print(f'Participation Probability: {element['participationProbability'].rjust(20)}')
+        print(f'Booking state: {bookingState.rjust(32)}')
         if waitingListPosition != '--' and waitingListPosition != '0':
-            print(f'Waiting list position: {waitingListPosition}')
+            print(f'Waiting list position: {waitingListPosition.rjust(23)}')
         print(f'\n------------------------------------------------\n')
 
 #Independent member information 
