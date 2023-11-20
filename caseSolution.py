@@ -45,6 +45,10 @@ def OrganizedBooking():
         else:
             waitingList = '--'
 
+#FollowingBookingInfo
+        followingBookingCount = element['followingBookingCount']
+        followingBookings = element['followingBookings']
+
 #MemberBookingInfo
         bookingState = element['bookingInfo']['memberBookingInfo']['bookingState']
         
@@ -61,6 +65,8 @@ def OrganizedBooking():
               f'Club: {clubName.rjust(41)}\n\n'
               f'\033[1;37mBooking Information:\033[0m\n'
               f'Booked: {bookedCount.rjust(36)}/{capacity}')
+        if followingBookingCount != 0:
+            print(f'Friends booked: {followingBookings}')
         if waitingList != '--':
             print(f'Waiting list: {waitingList.rjust(33)}')
         if 'participationProbability' in element:
@@ -70,13 +76,6 @@ def OrganizedBooking():
             print(f'Waiting list position: {waitingListPosition.rjust(23)}')
         print(f'\n-----------------------------------------------\n')
 
-#Independent member information 
-    followingBookingCount = element['followingBookingCount']
-    followingBookings = element['followingBookings']
-    
-    print(f'\033[1;37mMember booking information for {participationId}:\033[0m\n'
-        f'FollowingBookingCount: {followingBookingCount}\n'
-        f'FollowingBookings: {followingBookings}\n\n')
 
 if __name__ == '__main__':
     OrganizedBooking()
